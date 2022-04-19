@@ -28,6 +28,7 @@ def battle():
     req = requests.get('https://pokeapi.co/api/v2/pokemon/')
     print(req.status_code)
     data = json.loads(req.content)
+
     pokemon1 = services.getpokedata('Pikachu')
     pokemon1 = services.Pokemon(pokemon1)
     pokemon2 = services.getpokedata('Mewtwo')

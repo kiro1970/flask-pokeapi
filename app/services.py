@@ -17,6 +17,7 @@ def getpokedata(pokemon):
 class Pokemon:
     def __init__(self, pokedata):
         print('CLASS INIT')
+        self.sprite = pokedata['sprites']['front_default']
         self.name = pokedata['name']
         self.hp = pokedata['stats'][0]['base_stat']
         self.attack = pokedata['stats'][1]['base_stat']
