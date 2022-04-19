@@ -6,6 +6,7 @@ import requests
 import json
 print('LOADING ROUTES 2')
 from app import services
+from .forms import PokeForm
 #from services import Pokemon
 #from services import getpokedata
 print('LOADING ROUTES 3')
@@ -25,7 +26,7 @@ def view():
 
 @app.route('/letsbattle', methods=['POST'])
 def battle():
-
+    form = PokeForm
     #res = requests.get('https://pokeapi.co/api/v2/pokemon/')
     #print(res.status_code)
     #data = json.loads(res.content)
@@ -50,5 +51,5 @@ def battle():
     
 # DO BATTLE MATH - RETURN WINNER
 
-    return render_template('letsbattle.html', title="Let's Battle!", winner=winner, pokemon1=pokemon1, pokemon2=pokemon2)
+    return render_template('letsbattle.html', form=form, title="Let's Battle!", winner=winner, pokemon1=pokemon1, pokemon2=pokemon2)
 

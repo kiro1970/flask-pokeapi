@@ -6,10 +6,12 @@
     <div class="row">
         <form class="row" action="/letsbattle" method="POST">
             <div class="col-4">
-            <input class="form-control form-control-lg"  type="text" name="pokemon1input" placeholder="Choose your Pokemon!">
+            <input   type="text" name="pokemon1input" placeholder="Choose your Pokemon!">
+            {{ form.pokemon1input(class="form-control form-control-lg", placeholder="Choose your Pokemon!") }}
             </div>
             <div class="col-4">
             <input class="form-control form-control-lg" type="text" name="pokemon2input" placeholder="Opponent's Pokemon">
+            {{ form.pokemon2input(class="form-control form-control-lg", placeholder="Opponent's Pokemon!") }}
             </div>
             <div class="col-4">
             <input type="submit" value="Let's Battle!" class="btn btn-danger border form-control form-control-lg" id="btn">
@@ -23,7 +25,8 @@
 {% block leftcol %} 
 <div class="bg-white m-5 text-primary">
     <div class="m-5">
-        <p>Hello world!</p>
+        <p>Hello world!{{ form }}</p>
+        
     </div>
     
 </div>
