@@ -6,5 +6,5 @@ print('BASEDIR==' + basedir)
 class Config:
     FLASK_APP = os.environ.get('FLASK_APP')
     FLASK_ENV = os.environ.get('FLASK_ENV')
-    SECRECT_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     DEBUG = True

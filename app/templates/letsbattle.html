@@ -5,16 +5,15 @@
 <div class="container m-4">
     <div class="row">
         <form class="row" action="/letsbattle" method="POST">
+            {{ form.hidden_tag() }}
             <div class="col-4">
-            <input   type="text" name="pokemon1input" placeholder="Choose your Pokemon!">
-            {{ form.pokemon1input(class="form-control form-control-lg", placeholder="Choose your Pokemon!") }}
+                {{ form.pokemon1input(class="col-4 m-5 form-control form-control-lg", placeholder="Choose your Pokemon!") }}
             </div>
             <div class="col-4">
-            <input class="form-control form-control-lg" type="text" name="pokemon2input" placeholder="Opponent's Pokemon">
-            {{ form.pokemon2input(class="form-control form-control-lg", placeholder="Opponent's Pokemon!") }}
+                {{ form.pokemon2input(class="col-4 m-5 form-control form-control-lg", placeholder="Opponent's Pokemon!") }}
             </div>
             <div class="col-4">
-            <input type="submit" value="Let's Battle!" class="btn btn-danger border form-control form-control-lg" id="btn">
+                {{ form.submit(class="col-4 m-5 btn btn-danger border form-control form-control-lg")}}
             </div>
         </form>
     </div>
@@ -25,7 +24,7 @@
 {% block leftcol %} 
 <div class="bg-white m-5 text-primary">
     <div class="m-5">
-        <p>Hello world!{{ form }}</p>
+        <p></p>
         
     </div>
     
