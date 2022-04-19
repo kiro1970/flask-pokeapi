@@ -5,7 +5,7 @@ from flask import render_template
 import requests
 import json
 print('LOADING ROUTES 2')
-#import app.services
+from app import services
 #from services import Pokemon
 #from services import getpokedata
 print('LOADING ROUTES 3')
@@ -20,16 +20,31 @@ def about():
     return render_template('howitworks.html', title="Learn how to battle!")
 
 @app.route('/letsbattle')
+def view():
+    return render_template('letsbattle.html', title="Let's Battle!")
+
+@app.route('/letsbattle', methods=['POST'])
 def battle():
     req = requests.get('https://pokeapi.co/api/v2/pokemon/')
     print(req.status_code)
     data = json.loads(req.content)
-    pokemon1 = app.services.getpokedata('Pikachu')
-    pokemon1 = app.services.Pokemon(pokemon1)
-    pokemon2 = app.services.getpokedata('Mewtwo')
-    pokemon2 = app.services.Pokemon(pokemon2)
+    pokemon1 = services.getpokedata('Pikachu')
+    pokemon1 = services.Pokemon(pokemon1)
+    pokemon2 = services.getpokedata('Mewtwo')
+    pokemon2 = services.Pokemon(pokemon2)
+    outcome1 = pokemon1.attack - pokemon2.defense
+    outcome2 = pokemon2.attack - pokemon1.defense
+    if outcome1 > outcome2:
+        winner = pokemon1
+    elif outcome2 > outcome1:
+        winner = pokemon2
+    elif pokemon1.hp > pokemon2.hp:
+        winner = pokemon1
+    else:
+         winner = pokemon2
+    
+    
+# DO BATTLE MATH - RETURN WINNER
 
-
-    return render_template('letsbattle.html', title="Let's Battle!", data=data, pokemon1=pokemon1, pokemon2=pokemon2)
-
+    return render_template('letsbattle.html', title="Let's Battle!", winner=winner)
 

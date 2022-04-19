@@ -3,7 +3,10 @@ import requests as r
 print('LOADING SERVICES')
 pokemon = 'squirtle'
 def getpokedata(pokemon):
-    response = r.get(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
+    pokemon = pokemon.lower()
+    url = f'https://pokeapi.co/api/v2/pokemon/{pokemon}'
+    print(url)
+    response = r.get(url)
     print(response.status_code)
     print(response)
     # pokedata = response
@@ -13,9 +16,12 @@ def getpokedata(pokemon):
 
 class Pokemon:
     def __init__(self, pokedata):
+        print('CLASS INIT')
         self.name = pokedata['name']
-        self.attack = pokedata['stats']['1']['stat']['name']
-        self.defense = pokedata['stats']['0']['stat']['name']
+        self.hp = pokedata['stats'][0]['base_stat']
+        self.attack = pokedata['stats'][1]['base_stat']
+        self.defense = pokedata['stats'][2]['base_stat']
+        print(f'Attack {self.attack}')
         
     def printInfo(self):
         print(f'Name: {self.name.capitalize()}')
