@@ -2,9 +2,9 @@
 {% include 'components/footer.html' %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container m-4">
     <div class="row">
-        <form class="row" action="" method="POST">
+        <form class="row" action="/letsbattle" method="POST">
             <div class="col-4">
             <input class="form-control form-control-lg"  type="text" name="pokemon1input" placeholder="Choose your Pokemon!">
             </div>
@@ -12,7 +12,7 @@
             <input class="form-control form-control-lg" type="text" name="pokemon2input" placeholder="Opponent's Pokemon">
             </div>
             <div class="col-4">
-            <button class="btn btn-danger border form-control form-control-lg" type="button" id="btn" onclick="getinfo();">Let's Battle!</button>
+            <input type="submit" value="Let's Battle!" class="btn btn-danger border form-control form-control-lg" id="btn">
             </div>
         </form>
     </div>

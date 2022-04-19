@@ -1,7 +1,7 @@
 print('LOADING ROUTES')
 from urllib import response
 from app import app
-from flask import render_template
+from flask import render_template, request,jsonify
 import requests
 import json
 print('LOADING ROUTES 2')
@@ -25,13 +25,16 @@ def view():
 
 @app.route('/letsbattle', methods=['POST'])
 def battle():
-    req = requests.get('https://pokeapi.co/api/v2/pokemon/')
-    print(req.status_code)
-    data = json.loads(req.content)
 
-    pokemon1 = services.getpokedata('Pikachu')
+    #res = requests.get('https://pokeapi.co/api/v2/pokemon/')
+    #print(res.status_code)
+    #data = json.loads(res.content)
+    pokemon1input = request.form.get("pokemon1input")
+    pokemon2input = request.form.get("pokemon2input")
+    
+    pokemon1 = services.getpokedata(pokemon1input)
     pokemon1 = services.Pokemon(pokemon1)
-    pokemon2 = services.getpokedata('Mewtwo')
+    pokemon2 = services.getpokedata(pokemon2input)
     pokemon2 = services.Pokemon(pokemon2)
     outcome1 = pokemon1.attack - pokemon2.defense
     outcome2 = pokemon2.attack - pokemon1.defense
@@ -43,9 +46,9 @@ def battle():
         winner = pokemon1
     else:
          winner = pokemon2
-    
+    print(winner.name)
     
 # DO BATTLE MATH - RETURN WINNER
 
-    return render_template('letsbattle.html', title="Let's Battle!", winner=winner)
+    return render_template('letsbattle.html', title="Let's Battle!", winner=winner, pokemon1=pokemon1, pokemon2=pokemon2)
 
