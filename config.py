@@ -1,6 +1,7 @@
 import os
 
 basedir = os.path.abspath(os.path.dirname(__name__))
+print('BASEDIR==' + basedir)
 
 class Config:
     FLASK_APP = os.environ.get('FLASK_APP')
