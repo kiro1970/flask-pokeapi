@@ -23,14 +23,13 @@ def about():
 @app.route('/letsbattle')
 def view():
     form = PokeForm()
-    return render_template('letsbattle.html', title="Let's Battle!", form=form)
+    pokemon1 = None
+    pokemon2 = None
+    return render_template('letsbattle.html', title="Let's Battle!", form=form, pokemon1 = pokemon1, pokemon2 = pokemon2)
 
 @app.route('/letsbattle', methods=['POST'])
 def battle():
     form = PokeForm()
-    #res = requests.get('https://pokeapi.co/api/v2/pokemon/')
-    #print(res.status_code)
-    #data = json.loads(res.content)
     pokemon1input = request.form.get("pokemon1input")
     pokemon2input = request.form.get("pokemon2input")
     

@@ -24,18 +24,27 @@
 {% block leftcol %} 
 <div class="bg-white m-5 text-primary">
     <div class="m-5">
-        <p></p>
-        
+        <img src="{{ pokemon1.sprite }}" alt="">
+        <h4>Pokemon: </h4><p>{{ pokemon1.name }}</p>
+        <h4>Attack: </h4><p>{{ pokemon1.attack }}</p>
+        <h4>Defense: </h4><p>{{ pokemon1.defense }}</p>
+        {% if pokemon1.name == winner.name %}
+        <h2>Winner!</h2>
+        {% endif %}
     </div>
-    
 </div>
 {% endblock leftcol %} 
 
 {% block rightcol %} 
 <div class="bg-white m-5 text-danger">
     <div class="m-5">
-        <p>Hello pokeWorld!!</p>
+        <img src="{{ pokemon2.sprite }}" alt="">
+        <h4>Pokemon: </h4><p>{{ pokemon2.name }}</p>
+        <h4>Attack: </h4><p>{{ pokemon2.attack }}</p>
+        <h4>Defense: </h4><p>{{ pokemon2.defense }}</p>
+        {%if pokemon2.name == winner.name %}
+        <h2>Winner!</h2>
+        {% endif %}
     </div>
-    
 </div>
 {% endblock rightcol %} 
